@@ -70,19 +70,19 @@ for(ex=0;ex<3;ex++){
 	
 	if(ex==0){
 		size = 100;
-		maxIterations = 10*size;
-		errorMargin = 0.00001;
-		printf("Teste b1: n=100, e=0.00001, itmax=10000.\n\n");
+		maxIterations = size*size;
+		errorMargin = 0.0000000001;
+		printf("Teste b1: n=100, e=0.0000000001, itmax=10000.\n\n");
 	}else if(ex==1){
 		size = 200;
-		maxIterations = 10*size;
-		errorMargin = 0.00001;
-		printf("Teste b2: n=200, e=0.00001, itmax=20000.\n\n");
+		maxIterations = size*size;
+		errorMargin = 0.0000000001;
+		printf("Teste b2: n=200, e=0.0000000001, itmax=40000.\n\n");
 	}else if(ex==2){
 		size = 500;
 		maxIterations = 10*size;
 		errorMargin = 0.0000000001;
-		printf("Teste c: n=500, e=0.0000000001, itmax=50000.\n\n");
+		printf("Teste c: n=500, e=0.0000000001, itmax=5000.\n\n");
 	}
 	
 	eF |= initMatrix(&A, size);
@@ -279,9 +279,15 @@ int fillMatrixAsSpecified(matrix A, int size){
 			}
 			A[i][i]=4.5;
 			if(i+1<size){
-				A[i][i+1]=A[i+1][i]=-1;
+				A[i][i+1]=-1;
 				if(i+3<size){
-					A[i][i+3]=A[i+3][i]=-1;
+					A[i][i+3]=-1;
+				}
+			}
+			if(i-1>=0){
+				A[i][i-1]=-1;
+				if(i-3>=0){
+					A[i][i-3]=-1;
 				}
 			}
 		}
